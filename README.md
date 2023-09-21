@@ -32,8 +32,11 @@ The above example provides two services
 
 - install [composer](https://getcomposer.org/download/)
 
+- run composer in publisher and consumer folders
+
 ```bash
-composer install
+cd consumer && composer install
+cd publisher && composer install
 ```
 
 - install [docker desktop](https://www.docker.com/products/docker-desktop/)
