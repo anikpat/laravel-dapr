@@ -30,6 +30,12 @@ The above example provides two services
 
 ### Running the example
 
+- install [composer](https://getcomposer.org/download/)
+
+```bash
+composer install
+```
+
 - install [docker desktop](https://www.docker.com/products/docker-desktop/)
 
 ```bash
