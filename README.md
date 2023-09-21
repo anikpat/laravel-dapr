@@ -4,12 +4,19 @@
 
 Dapr is a portable, event-driven runtime that makes it easy for any developer to build resilient, stateless and stateful applications that run on the cloud and edge and embraces the diversity of languages and developer frameworks. Leveraging the benefits of a sidecar architecture, Dapr helps you tackle the challenges that come with building microservices and keeps your code platform agnostic.
 
+![Dapr Services](docs/images/dapr-services.png)
 
 ### Laravel Caveats
 
 Dapr [PHP sdk](https://github.com/dapr/php-sdk) does not work with latest version of laravel due dependecy issues.
 To solve this we needed a way to work natively with dapr using dapr's internal Api.
 
+### Advantages of using Dapr over laravel queues
+
+ > Dapr is portable
+ > Dapr is language agnostic
+ > Dapr is platform agnostic
+ > Dapr is cloud agnostic
 
 ### Solution
 
