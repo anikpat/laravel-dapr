@@ -1,7 +1,7 @@
 apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
-  name: otodapr-pubsub-queues
+  name: pubsub-queues
   namespace: default
 spec:
   type: pubsub.redis

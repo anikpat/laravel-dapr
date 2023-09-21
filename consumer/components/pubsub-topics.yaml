@@ -1,7 +1,7 @@
 apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
-  name: otodapr-pubsub-topics
+  name: pubsub-topics
   namespace: default
 spec:
   type: pubsub.redis
