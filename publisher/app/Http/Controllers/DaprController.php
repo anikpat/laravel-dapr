@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 class DaprController extends Controller
 {
     //
-    public function DaprPublishMessage() {
+    public function DaprPublishMessage(Request $request) {
         Http::withHeaders([
             "Content-Type" => "application/cloudevents+json"
         ])->post('http://localhost:3500/v1.0/publish/otodapr-pubsub-topics/orders', [
@@ -20,8 +20,12 @@ class DaprController extends Controller
             "time" => "2021-08-02T09:00:00Z",
             "datacontenttype" => "application/cloudevents+json",
             "data" => [
-                "orderId" => "100"
+                $request->data
             ]
+        ]);
+
+        return response()->json([
+            "message" => "Message published successfully"
         ]);
     }
 }

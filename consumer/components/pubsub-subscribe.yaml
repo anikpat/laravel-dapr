@@ -8,5 +8,7 @@ spec:
     rules:
     - match: 'event.type == "create"'
       path: /api/dapr/create
+    - match: 'event.type == "cancel"'
+      path: /api/dapr/cancel
     default: /api/dapr/receive
   pubsubname: otodapr-pubsub-topics
