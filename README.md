@@ -14,8 +14,11 @@ To solve this we needed a way to work natively with dapr using dapr's internal A
 ### Advantages of using Dapr over laravel queues
 
  > Dapr is portable
+
  > Dapr is language agnostic
+
  > Dapr is platform agnostic
+
  > Dapr is cloud agnostic
 
 ### Solution
