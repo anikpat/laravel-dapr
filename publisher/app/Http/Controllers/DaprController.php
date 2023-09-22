@@ -13,11 +13,8 @@ use Illuminate\Validation\ValidationException;
 
 class DaprController extends Controller
 {
-    private DaprPublishService $daprPublishService;
 
-    public function __construct(DaprPublishService $daprPublishService) {
-        $this->daprPublishService = $daprPublishService;
-    }
+    public function __construct(protected DaprPublishService $daprPublishService) { }
 
     /**
      * @throws ValidationException

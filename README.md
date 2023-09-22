@@ -47,6 +47,14 @@ docker compose up
 
 - Make a post request using postman to http://localhost:8088/api/dapr/publish
 
+- Sample payload
+```json
+{
+        "orderId": "400",
+        "type": "cancel"
+}
+```
+
 - Observe the log in consumer app will print the received message
 
 ### Dapr config
