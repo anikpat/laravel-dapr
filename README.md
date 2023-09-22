@@ -62,3 +62,8 @@ docker compose up
 - To check dapr config for publisher send a post request to http://localhost:3500/v1.0/metadata
 
 - To check dapr config for consumer send a post request to http://localhost:3501/v1.0/metadata
+
+
+### Detailed explanation
+
+[Medium](https://medium.com/@anikpat/implement-event-driven-architecture-using-laravel-and-dapr-7c882b3bd1de)
