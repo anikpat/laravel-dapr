@@ -11,7 +11,7 @@ class DaprController extends Controller
     public function DaprPublishMessage(Request $request) {
         Http::withHeaders([
             "Content-Type" => "application/cloudevents+json"
-        ])->post('http://localhost:3500/v1.0/publish/otodapr-pubsub-topics/orders', [
+        ])->post('http://localhost:3500/v1.0/publish/pubsub-topics/orders', [
             "specversion" => "1.0",
             "type" => "create",
             "source" => "testcloudeventspubsub",

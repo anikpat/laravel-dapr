@@ -11,4 +11,4 @@ spec:
     - match: 'event.type == "cancel"'
       path: /api/dapr/cancel
     default: /api/dapr/receive
-  pubsubname: otodapr-pubsub-topics
+  pubsubname: pubsub-topics
