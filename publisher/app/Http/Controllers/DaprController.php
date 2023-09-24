@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Services\DaprService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Services\DaprPublishService;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -14,7 +13,7 @@ use Illuminate\Validation\ValidationException;
 class DaprController extends Controller
 {
 
-    public function __construct(protected DaprPublishService $daprPublishService) { }
+    public function __construct(protected DaprService $daprService) { }
 
     /**
      * @throws ValidationException
@@ -52,7 +51,7 @@ class DaprController extends Controller
         $validated = $validator->validated();
 
         // Publish the message using Dapr Service
-        $result = $this->daprPublishService->sendMessage($validated['orderId'], $validated['type']);
+        $result = $this->daprService->sendTopicMessage('orders',$validated['orderId'], $validated['type']);
 
         if ($result)
         {
@@ -62,7 +61,7 @@ class DaprController extends Controller
         } else {
             return response()->json([
                 "message" => "Message failed to publish"
-            ]);
+            ], 400);
         }
 
     }
