@@ -16,8 +16,6 @@ class DaprE2ETest extends TestCase
         $response = $this->post('/api/dapr/publish', [
             'orderId' => '1',
             'type' => 'create',
-        ], [
-            "Content-Type" => "application/cloudevents+json"
         ]);
 
         $response->assertStatus(200);
