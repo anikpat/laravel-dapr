@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
 
 class DaprE2ETest extends TestCase
@@ -52,5 +54,28 @@ class DaprE2ETest extends TestCase
                 "Order ID is required"
             ]
         ]);
+    }
+
+
+    /**
+     * Test Dapr Health endpoints
+     */
+    public function test_e2e_dapr_health(): void
+    {
+        $response = $this->get('/api/dapr/health');
+
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Test success.
+     */
+    public function test_e2e_dapr_heatlth_failure(): void
+    {
+        Config::set('dapr.endpoint', 'http://localhost:4000');
+        $response = $this->get('/api/dapr/health');
+
+        Log::error($response->getContent());
+        $response->assertStatus(500);
     }
 }
