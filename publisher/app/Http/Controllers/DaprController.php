@@ -65,4 +65,19 @@ class DaprController extends Controller
         }
 
     }
+
+    public function DaprHealthCheck(): JsonResponse
+    {
+        $result = $this->daprService->getDaprHealth();
+
+        if ($result) {
+            return response()->json([
+                "message" => "Dapr is Healthy",
+            ]);
+        }
+
+        return response()->json([
+            "message" => "Dapr is Unhealthy",
+        ], 500);
+    }
 }

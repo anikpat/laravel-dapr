@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Interfaces\DaprServiceInterface;
 use Exception;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -13,7 +14,7 @@ class DaprService implements DaprServiceInterface {
 
     private string $daprEndpoint;
     public function __construct() {
-        $this->daprEndpoint = env('DAPR_ENDPOINT') ?? 'http://localhost:3500';
+        $this->daprEndpoint = Config::get('dapr.endpoint');
     }
 
     /**
@@ -74,6 +75,23 @@ class DaprService implements DaprServiceInterface {
             return true;
         }
         catch (Exception $e) {
+            $error = $e->getMessage();
+            Log::error($error);
+            return false;
+        }
+    }
+
+
+    public function getDaprHealth(): bool
+    {
+        try {
+            $response = Http::get($this->daprEndpoint.'/v1.0/healthz');
+            if($response->status() === 204) {
+                return true;
+            }
+            return false;
+
+        } catch (Exception $e) {
             $error = $e->getMessage();
             Log::error($error);
             return false;

@@ -20,4 +20,11 @@ interface DaprServiceInterface
      * Send Queue Message to a given queue
      */
     public function sendQueueMessage(String $queueName, mixed $message, String $type): bool;
+
+
+    /**
+     * @return int|string
+     * Get Dapr Health
+     */
+    public function getDaprHealth(): bool;
 }
