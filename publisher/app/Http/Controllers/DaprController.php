@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 class DaprController extends Controller
 {
@@ -64,6 +65,23 @@ class DaprController extends Controller
             ], 400);
         }
 
+    }
+
+
+    public function DaprHttpInvoke(Request $request): JsonResponse
+    {
+        $result = $this->daprService->sendRestRequest("test Rest Request", "RestRequest");
+
+        if ($result) {
+            return response()->json([
+                "message" => "Dapr HTTP Invoke successful",
+                "result" => $result
+            ]);
+        }
+
+        return response()->json([
+            "message" => "Dapr HTTP Invoke failed",
+        ], 500);
     }
 
     public function DaprHealthCheck(): JsonResponse

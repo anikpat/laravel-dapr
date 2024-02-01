@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::post('/dapr/create', [\App\Http\Controllers\DaprController::class, 'DaprCreateMessage']);
 Route::post('/dapr/cancel', [\App\Http\Controllers\DaprController::class, 'DaprCancelMessage']);
 Route::post('/dapr/receive', [\App\Http\Controllers\DaprController::class, 'DaprReceive']);
+Route::post('/dapr/rest', [\App\Http\Controllers\DaprController::class, 'DaprRestMessage']);

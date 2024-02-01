@@ -26,6 +26,15 @@ class DaprController extends Controller
         ]);
     }
 
+    public function DaprRestMessage(Request $request) {
+        Log::error("Dapr Rest message received");
+        $data = $request->all();
+        Log::error(json_encode($data));
+        return response()->json([
+            "message" => "Dapr REST request received successfully"
+        ]);
+    }
+
     public function DaprCancelMessage(Request $request) {
         Log::error("Dapr Cancel Message");
         $data = $request->all();

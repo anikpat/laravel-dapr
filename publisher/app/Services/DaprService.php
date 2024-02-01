@@ -81,6 +81,38 @@ class DaprService implements DaprServiceInterface {
         }
     }
 
+    /**
+     * @param mixed $message
+     * @param String $type
+     * @return bool
+     * Send Queue Message to a given queue
+     */
+    public function sendRestRequest(mixed $message, String $type) {
+        try {
+            $request = Http::withHeaders([
+                        "Content-Type" => "application/cloudevents+json"
+                    ])->post($this->daprEndpoint.'/v1.0/invoke/consumer/method/api/dapr/rest', [
+                        "specversion" => "1.0",
+                        "type" => $type,
+                        "source" => "publisherService",
+                        "subject" => "Message from publisher",
+                        "id" => Str::uuid()->toString(),
+                        "time" => Date::now('UTC'),
+                        "datacontenttype" => "application/cloudevents+json",
+                        "data" => [
+                            $message
+                        ]
+                    ]);
+            Log::error($request);
+            return $request->getBody();
+        }
+        catch (Exception $e) {
+            $error = $e->getMessage();
+            Log::error($error);
+            return false;
+        }
+    }
+
 
     public function getDaprHealth(): bool
     {

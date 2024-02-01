@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/dapr/publish', [\App\Http\Controllers\DaprController::class, 'DaprPublishMessage']);
 
+Route::post('/dapr/rest', [\App\Http\Controllers\DaprController::class, 'DaprHttpInvoke']);
+
 Route::get('/dapr/health', [\App\Http\Controllers\DaprController::class, 'DaprHealthCheck']);
